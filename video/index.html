@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando... | GAME-ON®</title>
+    <style>
+        :root {
+            --azul-petroleo: #223C50;
+            --cobre: #B87333;
+            --off-white: #FAF9F6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--azul-petroleo);
+            color: var(--off-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .container {
+            max-width: 400px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--cobre);
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: var(--cobre);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+        
+        .manual-link {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .manual-link a {
+            color: var(--cobre);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .manual-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">GAME-<span>ON</span>®</div>
+        <div class="spinner"></div>
+        <h1>Preparando seu vídeo...</h1>
+        <p>Você será redirecionado em instantes.</p>
+        
+        <div class="manual-link">
+            <p>Não redirecionou? <a href="#" id="manualLink">Clique aqui</a></p>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURAÇÃO =====
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbwKBMGcXD_SAJ8NQmBjrHtQoGoN8O3psq2tgMDLJgnJeVmnk5eYa5fIzw20O9ViJ5/exec';
+        const VIDEO_URL = 'https://rafaelavilela.com.br/metodo-gameon'; // URL final do vídeo
+        
+        // ===== CAPTURA PARÂMETROS =====
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('email') || '';
+        const utm_campaign = params.get('utm_campaign') || '';
+        
+        // Atualiza link manual
+        document.getElementById('manualLink').href = VIDEO_URL;
+        
+        // ===== REGISTRA EVENTO E REDIRECIONA =====
+        async function trackAndRedirect() {
+            // Se tiver email, registra o evento
+            if (email) {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            tipo: 'evento',
+                            email: email,
+                            evento: 'clicou_video',
+                            origem: 'email',
+                            utm_campaign: utm_campaign
+                        })
+                    });
+                } catch (error) {
+                    console.error('Erro ao registrar evento:', error);
+                }
+            }
+            
+            // Redireciona após pequeno delay (para garantir que o evento foi enviado)
+            setTimeout(() => {
+                window.location.href = VIDEO_URL;
+            }, 800);
+        }
+        
+        // Executa
+        trackAndRedirect();
+    </script>
+</body>
+</html>
