@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando para WhatsApp... | GAME-ON®</title>
+    <style>
+        :root {
+            --azul-petroleo: #223C50;
+            --cobre: #B87333;
+            --off-white: #FAF9F6;
+            --verde-whatsapp: #25D366;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--azul-petroleo);
+            color: var(--off-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .container {
+            max-width: 400px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--cobre);
+        }
+        
+        .whatsapp-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--verde-whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .whatsapp-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+        
+        .manual-link {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .manual-link a {
+            color: var(--verde-whatsapp);
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .manual-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">GAME-<span>ON</span>®</div>
+        
+        <div class="whatsapp-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </div>
+        
+        <h1>Abrindo WhatsApp...</h1>
+        <p>Você será redirecionado para iniciar a conversa com a Rafaela.</p>
+        
+        <div class="manual-link">
+            <p>Não abriu? <a href="#" id="manualLink">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Clique aqui para abrir
+            </a></p>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURAÇÃO =====
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbwKBMGcXD_SAJ8NQmBjrHtQoGoN8O3psq2tgMDLJgnJeVmnk5eYa5fIzw20O9ViJ5/exec';
+        const WHATSAPP_NUMBER = '5518996923377'; // Seu número (apenas números, com código do país)
+        const WHATSAPP_MESSAGE = 'Oi Rafaela! Vi o vídeo do método GAME-ON e quero conversar.';
+        
+        // Monta URL do WhatsApp
+        const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+        
+        // ===== CAPTURA PARÂMETROS =====
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('email') || '';
+        const utm_campaign = params.get('utm_campaign') || '';
+        
+        // Atualiza link manual
+        document.getElementById('manualLink').href = WHATSAPP_URL;
+        
+        // ===== REGISTRA EVENTO E REDIRECIONA =====
+        async function trackAndRedirect() {
+            // Se tiver email, registra o evento
+            if (email) {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            tipo: 'evento',
+                            email: email,
+                            evento: 'clicou_whatsapp',
+                            origem: 'email',
+                            utm_campaign: utm_campaign
+                        })
+                    });
+                } catch (error) {
+                    console.error('Erro ao registrar evento:', error);
+                }
+            }
+            
+            // Redireciona após pequeno delay
+            setTimeout(() => {
+                window.location.href = WHATSAPP_URL;
+            }, 800);
+        }
+        
+        // Executa
+        trackAndRedirect();
+    </script>
+</body>
+</html>
