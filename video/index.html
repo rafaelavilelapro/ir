@@ -11,11 +11,7 @@
             --off-white: #FAF9F6;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -29,9 +25,7 @@
             padding: 24px;
         }
         
-        .container {
-            max-width: 400px;
-        }
+        .container { max-width: 400px; }
         
         .logo {
             font-size: 24px;
@@ -40,9 +34,7 @@
             letter-spacing: 1px;
         }
         
-        .logo span {
-            color: var(--cobre);
-        }
+        .logo span { color: var(--cobre); }
         
         .spinner {
             width: 48px;
@@ -54,9 +46,7 @@
             margin: 0 auto 24px;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
         h1 {
             font-size: 20px;
@@ -82,9 +72,7 @@
             font-size: 14px;
         }
         
-        .manual-link a:hover {
-            text-decoration: underline;
-        }
+        .manual-link a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -101,16 +89,28 @@
 
     <script>
         // ===== CONFIGURAÇÃO =====
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLw4go-euqom0mEAEkuJ7emvT12Do1vGPLkgKFjI4sXKGXsAkytlie9GLB-Gf1maML/exec';
-        const VIDEO_URL = 'https://rafaelavilela.com.br/metodo-gameon'; // URL final do vídeo
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq_uz1GgU5vaVa82jqIDpDMxkAYLHt172-Pfnrk8oKwOf1H9xOni4nQhQJKbwMP8Ba/exec';
+        const VIDEO_PAGE_URL = 'https://rafaelavilelapro.github.io/metodo-gameon'; 
         
         // ===== CAPTURA PARÂMETROS =====
         const params = new URLSearchParams(window.location.search);
         const email = params.get('email') || '';
         const utm_campaign = params.get('utm_campaign') || '';
+        const utm_source = params.get('utm_source') || '';
+        
+        // ===== MONTA URL DE DESTINO (passando email adiante) =====
+        function buildDestinationURL() {
+            const url = new URL(VIDEO_PAGE_URL);
+            if (email) url.searchParams.set('email', email);
+            if (utm_campaign) url.searchParams.set('utm_campaign', utm_campaign);
+            if (utm_source) url.searchParams.set('utm_source', utm_source);
+            return url.toString();
+        }
+        
+        const destinationURL = buildDestinationURL();
         
         // Atualiza link manual
-        document.getElementById('manualLink').href = VIDEO_URL;
+        document.getElementById('manualLink').href = destinationURL;
         
         // ===== REGISTRA EVENTO E REDIRECIONA =====
         async function trackAndRedirect() {
@@ -120,9 +120,7 @@
                     await fetch(APPS_SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             tipo: 'evento',
                             email: email,
@@ -138,7 +136,7 @@
             
             // Redireciona após pequeno delay (para garantir que o evento foi enviado)
             setTimeout(() => {
-                window.location.href = VIDEO_URL;
+                window.location.href = destinationURL;
             }, 800);
         }
         
