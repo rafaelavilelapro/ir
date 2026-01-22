@@ -12,11 +12,7 @@
             --verde-whatsapp: #25D366;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -30,9 +26,7 @@
             padding: 24px;
         }
         
-        .container {
-            max-width: 400px;
-        }
+        .container { max-width: 400px; }
         
         .logo {
             font-size: 24px;
@@ -41,9 +35,7 @@
             letter-spacing: 1px;
         }
         
-        .logo span {
-            color: var(--cobre);
-        }
+        .logo span { color: var(--cobre); }
         
         .whatsapp-icon {
             width: 64px;
@@ -95,9 +87,7 @@
             gap: 8px;
         }
         
-        .manual-link a:hover {
-            text-decoration: underline;
-        }
+        .manual-link a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -125,8 +115,8 @@
 
     <script>
         // ===== CONFIGURAÇÃO =====
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLw4go-euqom0mEAEkuJ7emvT12Do1vGPLkgKFjI4sXKGXsAkytlie9GLB-Gf1maML/exec';
-        const WHATSAPP_NUMBER = '5518996923377'; // Seu número (apenas números, com código do país)
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq_uz1GgU5vaVa82jqIDpDMxkAYLHt172-Pfnrk8oKwOf1H9xOni4nQhQJKbwMP8Ba/exec';
+        const WHATSAPP_NUMBER = '5518996923377';
         const WHATSAPP_MESSAGE = 'Oi Rafaela! Vi o vídeo do método GAME-ON e quero conversar.';
         
         // Monta URL do WhatsApp
@@ -148,9 +138,7 @@
                     await fetch(APPS_SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             tipo: 'evento',
                             email: email,
