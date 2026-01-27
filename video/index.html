@@ -125,7 +125,7 @@
                             tipo: 'evento',
                             email: email,
                             evento: 'clicou_video',
-                            origem: 'email',
+                            origem: origemFromURL || utmSource || 'video',
                             utm_campaign: utm_campaign
                         })
                     });
